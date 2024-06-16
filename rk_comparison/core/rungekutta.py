@@ -1,4 +1,4 @@
-class rungekutta:
+class RungeKutta:
     """This class contains Runge-Kutta methods of orders from 1 to 6."""
 
     def rungekutta1(self, f, x, y1, n, h):
@@ -18,7 +18,7 @@ class rungekutta:
             x.append(x[i] + h)
             y1.append(y1[i] + (0.25 * k1) + (0.75 * k2))
 
-    def RungeKutta3(self, f, x, y1, n, h):
+    def rungekutta3(self, f, x, y1, n, h):
         """Runge-Kutta order 3, sources: [1], [2] in in bibliography"""
         for i in range(n):
             k1 = h * f(x[i], y1[i])
@@ -30,7 +30,7 @@ class rungekutta:
                 y1[i] + ((2.0 / 9.0) * k1) + ((1.0 / 3.0) * k2) + ((4.0 / 9.0) * k3)
             )
 
-    def RungeKutta4(self, f, x, y1, n, h):
+    def rungekutta4(self, f, x, y1, n, h):
         """Runge-Kutta order 3, sources: [1], [2] in in bibliography"""
         for i in range(n):
             k1 = h * f(x[i], y1[i])
@@ -41,7 +41,7 @@ class rungekutta:
             x.append(x[i] + h)
             y1.append(y1[i] + (1.0 / 6.0) * (k1 + (2.0 * k2) + (2.0 * k3) + k4))
 
-    def RungeKutta5(self, f, x, y1, n, h):
+    def rungekutta5(self, f, x, y1, n, h):
         """Runge-Kutta order 5, source: [1], [3] in bibliography"""
         for i in range(n):
             k1 = h * f(x[i], y1[i])
@@ -66,7 +66,7 @@ class rungekutta:
                 * (7.0 * k1 + 32.0 * k2 + 12.0 * k4 + 32.0 * k5 + 7.0 * k6)
             )
 
-    def RungeKutta6(self, f, x, y1, n, h):
+    def rungekutta6(self, f, x, y1, n, h):
         """Runge-Kutta order 6, source: [1], [4] in bibliography"""
         for i in range(n):
             k1 = h * f(x[i], y1[i])

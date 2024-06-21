@@ -46,7 +46,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.bibliography-list .author {
+.bibliography-list .author, .id {
     font-weight: bold;
 }
 

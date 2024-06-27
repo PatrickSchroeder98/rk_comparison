@@ -3,12 +3,12 @@ class InputData:
     number of time intervals, initial number of nuclei. Every variable has it's own set and get method.
     """
 
-    t_min = 0
-    dt = 1
-    t_max = 100
-    intervals = 0
+    def __init__(self):
+        self.t_min = 0
+        self.dt = 1
+        self.t_max = 100
+        self.intervals = 0
 
-    nuclei = 100
 
     def set_t_min(self, t_min):
         self.t_min = t_min
@@ -35,8 +35,3 @@ class InputData:
     def get_intervals(self):
         return self.intervals
 
-    def set_nuclei(self, nuclei):
-        self.nuclei = nuclei
-
-    def get_nuclei(self):
-        return self.nuclei

@@ -4,21 +4,22 @@ class ResultsModel:
     to start calculations.
     """
 
-    resultRK1 = []
-    resultRK2 = []
-    resultRK3 = []
-    resultRK4 = []
-    resultRK5 = []
-    resultRK6 = []
+    def __init__(self):
+        self.resultRK1 = []
+        self.resultRK2 = []
+        self.resultRK3 = []
+        self.resultRK4 = []
+        self.resultRK5 = []
+        self.resultRK6 = []
 
-    resultFRK5 = []
-    resultFRK6 = []
-    resultFRK7 = []
-    resultFRK8 = []
+        self.resultFRK5 = []
+        self.resultFRK6 = []
+        self.resultFRK7 = []
+        self.resultFRK8 = []
 
-    resultAnalytical = []
+        self.resultAnalytical = []
 
-    time = []
+        self.time = []
 
     def set_results(self, result0, t_min):
         """Method that calls all the set methods, preparing the program to make calculations. Arguments result0

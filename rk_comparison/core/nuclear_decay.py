@@ -6,11 +6,17 @@ class NuclearDecay:
     Tau is a mean lifetime of a radioactive particle before decay.
     """
 
-    tau = 1.0
+    def __init__(self):
+        self.tau = 1.0
+        self.nuclei = 100
 
-    def equation(self, t, Nu):
+    def equation(self, t, nu):
         """Differential equation describing the nuclear decay problem. Source: [6] in bibliography."""
-        return -(Nu / self.get_tau())
+        return -(nu / self.get_tau())
+
+    def equation_analytical(self, nu0, t):
+        """Analytical solution to the nuclear decay problem. Source: [6] in bibliography."""
+        return nu0 * pow(math.e, -(t / self.get_tau()))
 
     def set_tau(self, tau):
         """Tau can be set by user with this method."""
@@ -20,6 +26,10 @@ class NuclearDecay:
         """Returns the tau value."""
         return self.tau
 
-    def equation_analytical(self, Nu0, t):
-        """Analytical solution to the nuclear decay problem. Source: [6] in bibliography."""
-        return Nu0 * pow(math.e, -(t / self.get_tau()))
+    def set_nuclei(self, nuclei):
+        """Initial number of nuclei can be set by user with this method."""
+        self.nuclei = nuclei
+
+    def get_nuclei(self):
+        """Returns the number of nuclei."""
+        return self.nuclei

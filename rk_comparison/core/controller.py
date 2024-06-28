@@ -4,10 +4,11 @@ from rk_comparison.core.output_data import ResultsModel
 from rk_comparison.core.input_data import InputData
 from rk_comparison.core.nuclear_decay import NuclearDecay
 from rk_comparison.core.plot import Plot
+from rk_comparison.core.comparison_data import ComparisonData
 
 
 class Controller:
-    """Class that calls methods to initialize data and to calculate the problem."""
+    """Class that calls methods to initialize data, to calculate the problem and to plot the results."""
 
     def __init__(self):
         self.rk = RungeKutta()
@@ -16,6 +17,7 @@ class Controller:
         self.id = InputData()
         self.nd = NuclearDecay()
         self.pl = Plot()
+        self.cd = ComparisonData()
 
         self.methods_rk = [
             self.rk.rungekutta1,
@@ -53,6 +55,18 @@ class Controller:
             "FRK7",
             "FRK8",
             "Analytical",
+        ]
+        self.compare_rk = [
+            self.cd.get_compareRK1,
+            self.cd.get_compareRK2,
+            self.cd.get_compareRK3,
+            self.cd.get_compareRK4,
+            self.cd.get_compareRK5,
+            self.cd.get_compareRK6,
+            self.cd.get_compareFRK5,
+            self.cd.get_compareFRK6,
+            self.cd.get_compareFRK7,
+            self.cd.get_compareFRK8
         ]
 
     def initialize(self, t_min, dt, t_max, nuclei, tau):
@@ -99,17 +113,24 @@ class Controller:
                 self.nd.equation_analytical(self.nd.get_nuclei(), i)
             )
 
-    def plot(self):
+    def compare(self):
+        """Method subtract RK results from analytical solution and saves the results to ComparisonData attributes."""
+        for result, compare in zip(self.results_rk, self.compare_rk):
+            for i in range(len(self.rs.get_result_analytical())):
+                compare().append(abs(self.rs.get_result_analytical()[i] - result()[i]))
+
+    def plot(self, compare, functions, y_label, title):
         """Method prepares result data to be displayed on chart and calls method to plot it."""
         results_list = []
-        for element in self.results_rk:
-            results_list.append(element())
-        results_list.append(self.rs.get_result_analytical())
+        for function in functions:
+            results_list.append(function())
+        if compare:
+            results_list.append(self.rs.get_result_analytical())
         self.pl.plot(
             self.rs.get_time(),
             results_list,
             "Time [s]",
-            "Nuclear Decay [nuclei]",
+            y_label,
             self.descriptions,
-            "Nuclear Decay",
+            title
         )

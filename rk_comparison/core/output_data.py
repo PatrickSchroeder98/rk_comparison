@@ -1,4 +1,4 @@
-class ResultsModel:
+class OutputData:
     """Class to hold output data: results of RK, FRK, analytical solution and time. Every variable has it's own set
     and get method. Set methods are clearing the lists and and appending the initial data needed for RK and FRK
     to start calculations.

@@ -1,6 +1,6 @@
 from rk_comparison.core.rungekutta import RungeKutta
 from rk_comparison.core.fehlbergrungekutta import FehlbergRungeKutta
-from rk_comparison.core.output_data import ResultsModel
+from rk_comparison.core.output_data import OutputData
 from rk_comparison.core.input_data import InputData
 from rk_comparison.core.nuclear_decay import NuclearDecay
 from rk_comparison.core.plot import Plot
@@ -13,7 +13,7 @@ class Controller:
     def __init__(self):
         self.rk = RungeKutta()
         self.frk = FehlbergRungeKutta()
-        self.rs = ResultsModel()
+        self.rs = OutputData()
         self.id = InputData()
         self.nd = NuclearDecay()
         self.pl = Plot()

@@ -1,10 +1,10 @@
-from rk_comparison.core.rungekutta import RungeKutta
-from rk_comparison.core.fehlbergrungekutta import FehlbergRungeKutta
-from rk_comparison.core.output_data import OutputData
-from rk_comparison.core.input_data import InputData
-from rk_comparison.core.nuclear_decay import NuclearDecay
-from rk_comparison.core.plot import Plot
-from rk_comparison.core.comparison_data import ComparisonData
+from rk_comparison.core.equations.rungekutta import RungeKutta
+from rk_comparison.core.equations.fehlbergrungekutta import FehlbergRungeKutta
+from rk_comparison.core.data.output_data import OutputData
+from rk_comparison.core.data.input_data import InputData
+from rk_comparison.core.equations.nuclear_decay import NuclearDecay
+from rk_comparison.core.controller.plot import Plot
+from rk_comparison.core.data.comparison_data import ComparisonData
 
 
 class Controller:

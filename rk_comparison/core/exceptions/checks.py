@@ -1,4 +1,4 @@
-from rk_comparison.core.exceptions import StrToFloatError, MinHigherThanMax, DeltaIsZero, DeltaIsNegative, TooLargeDelta, NoMethodChosen
+from rk_comparison.core.exceptions.exceptions import StrToFloatError, MinHigherThanMax, DeltaIsZero, DeltaIsNegative, TooLargeDelta, NoMethodChosen
 
 
 class Checks:

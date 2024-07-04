@@ -69,12 +69,14 @@ class Controller:
             self.cd.get_compareFRK8
         ]
 
-    def initialize(self, t_min, dt, t_max, nuclei, tau):
+    def initialize(self, t_min, dt, t_max, nuclei, tau, truth_table):
         """Method initializes the variables with values provided by user to start the calculations"""
         self.id.set_t_min(t_min)
         self.id.set_dt(dt)
         self.id.set_t_max(t_max)
         self.id.set_intervals()
+
+        self.id.set_truth_table(truth_table)
 
         self.nd.set_nuclei(nuclei)
         self.nd.set_tau(tau)
@@ -86,24 +88,29 @@ class Controller:
         proper lists. Added log to console for verification if the data are saved to correct lists. On the last loop
         iteration, the list of time values is not cleared.
         """
+        temp = []
         for i in range(len(self.methods_rk)):
-            print(
-                "From"
-                + str(self.methods_rk[i])
-                + " results are going to: "
-                + str(self.results_rk[i])
-                + ", this will be described as: "
-                + str(self.descriptions[i])
-            )
-            self.methods_rk[i](
-                self.nd.equation,
-                self.rs.get_time(),
-                self.results_rk[i](),
-                self.id.get_intervals(),
-                self.id.get_dt(),
-            )
-            if i != (len(self.methods_rk) - 1):
+            if self.id.get_truth_table()[i]:
+                print(
+                    "From"
+                    + str(self.methods_rk[i])
+                    + " results are going to: "
+                    + str(self.results_rk[i])
+                    + ", this will be described as: "
+                    + str(self.descriptions[i])
+                )
+                self.methods_rk[i](
+                    self.nd.equation,
+                    self.rs.get_time(),
+                    self.results_rk[i](),
+                    self.id.get_intervals(),
+                    self.id.get_dt(),
+                )
+                if len(self.rs.get_time()) > 1:
+                    temp = self.rs.get_time()
+
                 self.rs.set_time(self.id.get_t_min())
+        self.rs.time = temp
 
     def calculate_analytical(self):
         """Method calculates the nuclear decay problem in analytical way. Requires the time list to be filled with
@@ -115,22 +122,27 @@ class Controller:
 
     def compare(self):
         """Method subtract RK results from analytical solution and saves the results to ComparisonData attributes."""
-        for result, compare in zip(self.results_rk, self.compare_rk):
-            for i in range(len(self.rs.get_result_analytical())):
-                compare().append(abs(self.rs.get_result_analytical()[i] - result()[i]))
+        for result, compare, value in zip(self.results_rk, self.compare_rk, self.id.get_truth_table()):
+            if value:
+                for i in range(len(self.rs.get_result_analytical())):
+                    compare().append(abs(self.rs.get_result_analytical()[i] - result()[i]))
 
     def plot(self, compare, functions, y_label, title):
         """Method prepares result data to be displayed on chart and calls method to plot it."""
         results_list = []
-        for function in functions:
-            results_list.append(function())
+        desc = []
+        for i in range(len(functions)):
+            if self.id.get_truth_table()[i]:
+                results_list.append(functions[i]())
+                desc.append(self.descriptions[i])
         if compare:
             results_list.append(self.rs.get_result_analytical())
+            desc.append(self.descriptions[-1])
         self.pl.plot(
             self.rs.get_time(),
             results_list,
             "Time [s]",
             y_label,
-            self.descriptions,
+            desc,
             title
         )

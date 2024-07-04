@@ -36,3 +36,11 @@ class DeltaIsNegative(Exception):
     def __init__(self, message="Delta is negative."):
         self.message = message
         super().__init__(self.message)
+
+
+class NoMethodChosen(Exception):
+    """Exception raised when user didn't choose any numerical methods."""
+
+    def __init__(self, message="No numerical method chosen."):
+        self.message = message
+        super().__init__(self.message)

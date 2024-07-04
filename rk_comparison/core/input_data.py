@@ -8,6 +8,18 @@ class InputData:
         self.dt = 1
         self.t_max = 100
         self.intervals = 0
+        self.truth_table = [
+            True,
+            True,
+            True,
+            True,
+            True,
+            True,
+            True,
+            True,
+            True,
+            True
+        ]
 
 
     def set_t_min(self, t_min):
@@ -35,3 +47,8 @@ class InputData:
     def get_intervals(self):
         return self.intervals
 
+    def set_truth_table(self, truth_table):
+        self.truth_table = truth_table
+
+    def get_truth_table(self):
+        return self.truth_table

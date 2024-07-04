@@ -1,4 +1,4 @@
-from rk_comparison.core.exceptions import StrToFloatError, MinHigherThanMax, DeltaIsZero, DeltaIsNegative, TooLargeDelta
+from rk_comparison.core.exceptions import StrToFloatError, MinHigherThanMax, DeltaIsZero, DeltaIsNegative, TooLargeDelta, NoMethodChosen
 
 
 class Checks:
@@ -27,3 +27,9 @@ class Checks:
                 return TooLargeDelta().message
             else:
                 return
+
+    def check_truth_table(self, truth_table):
+        if True not in truth_table:
+            return NoMethodChosen().message
+        else:
+            return

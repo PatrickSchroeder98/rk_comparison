@@ -122,6 +122,7 @@ class Controller:
 
     def compare(self):
         """Method subtract RK results from analytical solution and saves the results to ComparisonData attributes."""
+        self.cd.clean_data()
         for result, compare, value in zip(self.results_rk, self.compare_rk, self.id.get_truth_table()):
             if value:
                 for i in range(len(self.rs.get_result_analytical())):

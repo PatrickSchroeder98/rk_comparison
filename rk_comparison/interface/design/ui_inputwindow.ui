@@ -208,7 +208,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_t_min_2">
+   <widget class="QLabel" name="label_tau">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -234,7 +234,7 @@
      <string>[s]</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="line_t_min_2">
+   <widget class="QLineEdit" name="line_tau">
     <property name="geometry">
      <rect>
       <x>60</x>

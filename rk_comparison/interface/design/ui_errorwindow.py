@@ -12,12 +12,12 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_ErrorWindow(object):
     def setupUi(self, ErrorWindow):
         ErrorWindow.setObjectName("ErrorWindow")
-        ErrorWindow.resize(370, 149)
+        ErrorWindow.resize(344, 149)
         self.label = QtWidgets.QLabel(parent=ErrorWindow)
-        self.label.setGeometry(QtCore.QRect(30, 40, 311, 41))
+        self.label.setGeometry(QtCore.QRect(30, 10, 291, 91))
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(parent=ErrorWindow)
-        self.pushButton.setGeometry(QtCore.QRect(130, 100, 93, 28))
+        self.pushButton.setGeometry(QtCore.QRect(120, 110, 93, 28))
         self.pushButton.setObjectName("pushButton")
 
         self.retranslateUi(ErrorWindow)

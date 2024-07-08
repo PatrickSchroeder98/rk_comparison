@@ -1,8 +1,8 @@
+from PyQt6 import QtWidgets
 from rk_comparison.interface.design.ui_mainwindow import Ui_MainWindow
 from rk_comparison.interface.ui.inputwindow import InputWindow
 from rk_comparison.interface.ui.plottingwindow import PlottingWindow
 from rk_comparison.core.controller.controller import Controller
-from PyQt6 import QtWidgets
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -11,6 +11,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__(parent=parent)
         self.setupUi(self)
 
+        self.popup = None
+        self.popup_ui = None
         self.controller = Controller()
         self.input_button.clicked.connect(self.input_clicked)
         self.calculate_button.clicked.connect(self.calculate_clicked)
@@ -19,7 +21,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def input_clicked(self):
         self.popup = QtWidgets.QDialog()
         self.popup_ui = InputWindow()
-        self.popup_ui.initialize_controller(self.controller)
+        self.popup_ui.initialize_data(self.controller)
         self.popup_ui.exec()
 
     def calculate_clicked(self):

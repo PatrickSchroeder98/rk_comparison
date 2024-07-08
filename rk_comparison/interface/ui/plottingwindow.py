@@ -1,5 +1,5 @@
-from rk_comparison.interface.design.ui_plottingwindow import Ui_PlottingWindow
 from PyQt6 import QtWidgets
+from rk_comparison.interface.design.ui_plottingwindow import Ui_PlottingWindow
 
 
 class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
@@ -8,6 +8,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         super(PlottingWindow, self).__init__(parent=parent)
         self.setupUi(self)
 
+        self.controller = None
         self.plot_result.clicked.connect(self.plot_results_clicked)
         self.plot_comparison.clicked.connect(self.plot_comparison_clicked)
         self.cancel_button.clicked.connect(self.cancel_clicked)

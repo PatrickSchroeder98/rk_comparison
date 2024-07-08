@@ -1,5 +1,6 @@
-from rk_comparison.interface.design.ui_errorwindow import Ui_ErrorWindow
 from PyQt6 import QtWidgets
+from rk_comparison.interface.design.ui_errorwindow import Ui_ErrorWindow
+
 
 class ErrorWindow(QtWidgets.QDialog, Ui_ErrorWindow):
 

@@ -1,10 +1,10 @@
-from rk_comparison.core.equations.rungekutta import RungeKutta
-from rk_comparison.core.equations.fehlbergrungekutta import FehlbergRungeKutta
+from rk_comparison.core.analytical_module.rungekutta import RungeKutta
+from rk_comparison.core.analytical_module.fehlbergrungekutta import FehlbergRungeKutta
 from rk_comparison.core.data.output_data import OutputData
 from rk_comparison.core.data.input_data import InputData
-from rk_comparison.core.equations.nuclear_decay import NuclearDecay
-from rk_comparison.core.controller.plot import Plot
+from rk_comparison.core.analytical_module.nuclear_decay import NuclearDecay
 from rk_comparison.core.data.comparison_data import ComparisonData
+from rk_comparison.core.analytical_module.statistics import Statistics
 
 
 class Controller:
@@ -16,8 +16,8 @@ class Controller:
         self.rs = OutputData()
         self.id = InputData()
         self.nd = NuclearDecay()
-        self.pl = Plot()
         self.cd = ComparisonData()
+        self.st = Statistics()
 
         self.methods_rk = [
             self.rk.rungekutta1,
@@ -128,22 +128,9 @@ class Controller:
                 for i in range(len(self.rs.get_result_analytical())):
                     compare().append(abs(self.rs.get_result_analytical()[i] - result()[i]))
 
-    def plot(self, compare, functions, y_label, title):
-        """Method prepares result data to be displayed on chart and calls method to plot it."""
-        results_list = []
-        desc = []
-        for i in range(len(functions)):
-            if self.id.get_truth_table()[i]:
-                results_list.append(functions[i]())
-                desc.append(self.descriptions[i])
-        if compare:
-            results_list.append(self.rs.get_result_analytical())
-            desc.append(self.descriptions[-1])
-        self.pl.plot(
-            self.rs.get_time(),
-            results_list,
-            "Time [s]",
-            y_label,
-            desc,
-            title
-        )
+        for j in range(len(self.compare_rk)):
+            if self.id.get_truth_table()[j]:
+                self.cd.set_min_values(self.st.min_max_value(self.compare_rk[j](), True))
+                self.cd.set_max_values(self.st.min_max_value(self.compare_rk[j](), False))
+                self.cd.set_mean_values(self.st.mean(self.compare_rk[j]()))
+

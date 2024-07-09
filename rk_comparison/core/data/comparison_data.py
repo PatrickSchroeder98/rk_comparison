@@ -14,6 +14,10 @@ class ComparisonData:
         self.compareFRK7 = []
         self.compareFRK8 = []
 
+        self.min_values = []
+        self.max_values = []
+        self.mean_values = []
+
     def clean_data(self):
         self.__init__()
 
@@ -77,4 +81,20 @@ class ComparisonData:
     def get_compareFRK8(self):
         return self.compareFRK8
 
+    def set_min_values(self, min_values):
+        self.min_values.append(min_values)
 
+    def get_min_values(self):
+        return self.min_values
+
+    def set_max_values(self, max_values):
+        self.max_values.append(max_values)
+
+    def get_max_values(self):
+        return self.max_values
+
+    def set_mean_values(self, mean_values):
+        self.mean_values.append(mean_values)
+
+    def get_mean_values(self):
+        return self.mean_values

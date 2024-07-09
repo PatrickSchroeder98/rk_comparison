@@ -48,6 +48,19 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
             self.line_tau
         ]
 
+        self.truth = [
+            self.rk1,
+            self.rk2,
+            self.rk3,
+            self.rk4,
+            self.rk5,
+            self.rk6,
+            self.frk5,
+            self.frk6,
+            self.frk7,
+            self.frk8
+        ]
+
     def initialize_data(self, controller):
         self.controller = controller
         self.line_t_min.setText(str(controller.id.get_t_min()))
@@ -55,6 +68,7 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
         self.line_t_max.setText(str(controller.id.get_t_max()))
         self.line_tau.setText(str(controller.nd.get_tau()))
         self.line_nuclei.setText(str(controller.nd.get_nuclei()))
+        self.get_truth_table_values()
 
     def apply_clicked(self):
         if self.change_type():
@@ -100,6 +114,11 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
             self.raise_error(message)
             return False
         return True
+
+    def get_truth_table_values(self):
+        for i in range(len(self.truth)):
+            if self.controller.id.get_truth_table()[i]:
+                self.truth[i].setChecked(True)
 
     def build_truth_table(self):
         self.truth_table = [

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>278</height>
+    <width>880</width>
+    <height>198</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="plot_result">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>30</x>
      <y>30</y>
      <width>141</width>
      <height>51</height>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="plot_comparison">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>110</y>
+     <x>200</x>
+     <y>30</y>
      <width>141</width>
      <height>51</height>
     </rect>
@@ -42,14 +42,53 @@
   <widget class="QPushButton" name="cancel_button">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>190</y>
+     <x>370</x>
+     <y>110</y>
      <width>141</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="plot_min">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>30</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Plot minimal values</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="plot_mean">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>30</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Plot mean values</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="plot_max">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>30</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Plot maximal values</string>
    </property>
   </widget>
  </widget>

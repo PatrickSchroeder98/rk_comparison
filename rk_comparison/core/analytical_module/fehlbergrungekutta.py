@@ -1,5 +1,5 @@
 class FehlbergRungeKutta:
-    """This class contains Fehlberg-Runge-Kutta methods of orders from 5 to 7. Work in progress on 8th order"""
+    """This class contains Fehlberg-Runge-Kutta methods of orders from 5 to 8."""
 
     def fehlbergrungekutta5(self, f, x, y1, n, h):
         """Fehlberg-Runge-Kutta order 5, source: [5] in in bibliography"""

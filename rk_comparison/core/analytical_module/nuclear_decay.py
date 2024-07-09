@@ -8,7 +8,7 @@ class NuclearDecay:
 
     def __init__(self):
         self.tau = 1.0
-        self.nuclei = 100
+        self.nuclei = 100.0
 
     def equation(self, t, nu):
         """Differential equation describing the nuclear decay problem. Source: [6] in bibliography."""

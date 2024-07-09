@@ -4,9 +4,9 @@ class InputData:
     """
 
     def __init__(self):
-        self.t_min = 0
+        self.t_min = 0.0
         self.dt = 0.05
-        self.t_max = 5
+        self.t_max = 5.0
         self.intervals = 0
         self.truth_table = [
             True,

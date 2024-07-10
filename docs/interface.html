@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Documentation</title>
+    <link rel="stylesheet" href="interface.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="header-title">Software Documentation</span>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1 class="title">Interface Documentation</h1>
+        
+        <table class="interface-table">
+            <tr class="highlight-row">
+                <td colspan="2">Window Name</td>
+            </tr>
+            <tr>
+                <td colspan="2">Main Window</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="assets/img/comparison_main_window.png" alt="Screenshot of Window 1" class="screenshot"></td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">Main window of application, allows user to take actions described below.</td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Sections</td>
+            </tr>
+            <tr>
+                <td>Main Section</td>
+                <td>Section with three main buttons.</td>
+            </tr>
+          
+            <tr class="highlight-row">
+                <td colspan="2">Actions</td>
+            </tr>
+            <tr>
+                <td>Input Data</td>
+                <td>Opens the window made to modify input data.</td>
+            </tr>
+            <tr>
+                <td>Calculate</td>
+                <td>Opens the window with plotting options.</td>
+            </tr>
+            <tr>
+                <td>Exit</td>
+                <td>Closes the application.</td>
+            </tr>
+        </table>
+		
+		<table class="interface-table">
+            <tr class="highlight-row">
+                <td colspan="2">Window Name</td>
+            </tr>
+            <tr>
+                <td colspan="2">Input Window</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="assets/img/comparison_input_window.png" alt="Screenshot of Window 1" class="screenshot"></td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">Window that allows user to set the input data.</td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Sections</td>
+            </tr>
+            <tr>
+                <td>Nuclear Decay</td>
+                <td>Section with input data related to nuclear decay: initial number of nuclei and Tau value.</td>
+            </tr>
+			<tr>
+                <td>Time</td>
+                <td>Section with input data related to time period: begining, end and delta.</td>
+            </tr>
+			<tr>
+                <td>Numerical Methods</td>
+                <td>Section that allows user to choose which numerical methods will be used.</td>
+            </tr>
+          
+            <tr class="highlight-row">
+                <td colspan="2">Actions</td>
+            </tr>
+            <tr>
+                <td>Apply</td>
+                <td>Saves the given values of input data to proper attributes, then closes the window. If the data are not correct, the window is not closed and error message is displayed in new window.</td>
+            </tr>
+            <tr>
+                <td>Cancel</td>
+                <td>Closes the window without saving the values.</td>
+            </tr>
+            
+        </table>
+		
+		<table class="interface-table">
+            <tr class="highlight-row">
+                <td colspan="2">Window Name</td>
+            </tr>
+            <tr>
+                <td colspan="2">Error Window</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="assets/img/comparison_error_window.png" alt="Screenshot of Window 1" class="screenshot"></td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">Window that informs user about error in input data.</td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Sections</td>
+            </tr>
+            <tr>
+                <td>Error Message</td>
+                <td>Section with dynamically generated error message that highlights the incorrect input data.</td>
+            </tr>
+			
+          
+            <tr class="highlight-row">
+                <td colspan="2">Actions</td>
+            </tr>
+            
+            <tr>
+                <td>OK</td>
+                <td>Closes the window.</td>
+            </tr>
+            
+        </table>
+		
+		<table class="interface-table">
+            <tr class="highlight-row">
+                <td colspan="2">Window Name</td>
+            </tr>
+            <tr>
+                <td colspan="2">Plotting Window</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="assets/img/comparison_plotting_window.png" alt="Screenshot of Window 1" class="screenshot"></td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">Window that allows user to choose which type of plot needs to be displayed.</td>
+            </tr>
+            <tr class="highlight-row">
+                <td colspan="2">Sections</td>
+            </tr>
+            <tr>
+                <td>Main Section</td>
+                <td>Section with buttons to show various plot types.</td>
+            </tr>
+			
+          
+            <tr class="highlight-row">
+                <td colspan="2">Actions</td>
+            </tr>
+            
+			<tr>
+                <td>Plot result</td>
+                <td>Displays the plot with results of nuclear decay problem.</td>
+            </tr>
+			<tr>
+                <td>Plot comparison</td>
+                <td>Displays the plot with comparison of numerical methods.</td>
+            </tr>
+			<tr>
+                <td>Plot minimal values</td>
+                <td>Displays a bar plot with minimal values of numerical methods from comparison.</td>
+            </tr>
+			<tr>
+                <td>Plot maximal values</td>
+                <td>Displays a bar plot with maximal values of numerical methods from comparison.</td>
+            </tr>
+			<tr>
+                <td>Plot minimal values</td>
+                <td>Displays a bar plot with mean values of numerical methods from comparison.</td>
+            </tr>
+            <tr>
+                <td>Cancel</td>
+                <td>Closes the window.</td>
+            </tr>
+            
+        </table>
+        
+        <div class="navigation">
+            <a href="requirements.html" class="prev-link">Previous</a>
+            <a href="bibliography.html" class="next-link">Next</a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024, Patrick Schröder, All rights reserved.
+    </footer>
+</body>
+</html>
+

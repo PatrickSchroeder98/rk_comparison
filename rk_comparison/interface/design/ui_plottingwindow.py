@@ -20,7 +20,7 @@ class Ui_PlottingWindow(object):
         self.plot_comparison.setGeometry(QtCore.QRect(200, 30, 141, 51))
         self.plot_comparison.setObjectName("plot_comparison")
         self.cancel_button = QtWidgets.QPushButton(parent=PlottingWindow)
-        self.cancel_button.setGeometry(QtCore.QRect(370, 110, 141, 51))
+        self.cancel_button.setGeometry(QtCore.QRect(460, 110, 141, 51))
         self.cancel_button.setObjectName("cancel_button")
         self.plot_min = QtWidgets.QPushButton(parent=PlottingWindow)
         self.plot_min.setGeometry(QtCore.QRect(370, 30, 141, 51))
@@ -31,6 +31,9 @@ class Ui_PlottingWindow(object):
         self.plot_max = QtWidgets.QPushButton(parent=PlottingWindow)
         self.plot_max.setGeometry(QtCore.QRect(540, 30, 141, 51))
         self.plot_max.setObjectName("plot_max")
+        self.save_button = QtWidgets.QPushButton(parent=PlottingWindow)
+        self.save_button.setGeometry(QtCore.QRect(280, 110, 141, 51))
+        self.save_button.setObjectName("save_button")
 
         self.retranslateUi(PlottingWindow)
         QtCore.QMetaObject.connectSlotsByName(PlottingWindow)
@@ -44,3 +47,4 @@ class Ui_PlottingWindow(object):
         self.plot_min.setText(_translate("PlottingWindow", "Plot minimal values"))
         self.plot_mean.setText(_translate("PlottingWindow", "Plot mean values"))
         self.plot_max.setText(_translate("PlottingWindow", "Plot maximal values"))
+        self.save_button.setText(_translate("PlottingWindow", "Save"))

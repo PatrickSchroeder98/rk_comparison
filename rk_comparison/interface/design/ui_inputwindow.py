@@ -84,7 +84,7 @@ class Ui_InputWindow(object):
         self.rk3.setObjectName("rk3")
         self.rk4 = QtWidgets.QCheckBox(parent=self.groupBox_3)
         self.rk4.setGeometry(QtCore.QRect(20, 80, 81, 20))
-        self.rk4.setChecked(True)
+        self.rk4.setChecked(False)
         self.rk4.setObjectName("rk4")
         self.rk5 = QtWidgets.QCheckBox(parent=self.groupBox_3)
         self.rk5.setGeometry(QtCore.QRect(20, 100, 81, 20))

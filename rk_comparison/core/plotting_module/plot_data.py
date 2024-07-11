@@ -26,26 +26,26 @@ class PlotData:
             title
         )
 
-    def prepare_plot_bar_min(self, controller):
+    def prepare_plot_bar_min(self, controller, x_label, y_label, title):
         x = []
         for i in range(len(controller.descriptions)-1):
             if controller.id.get_truth_table()[i]:
                 x.append(controller.descriptions[i])
 
-        self.pl.plot_bar(x, controller.cd.get_min_values(), "x_label", "y_label", "Title")
+        self.pl.plot_bar(x, controller.cd.get_min_values(), x_label, y_label, title)
 
-    def prepare_plot_bar_max(self, controller):
+    def prepare_plot_bar_max(self, controller, x_label, y_label, title):
         x = []
         for i in range(len(controller.descriptions)-1):
             if controller.id.get_truth_table()[i]:
                 x.append(controller.descriptions[i])
 
-        self.pl.plot_bar(x, controller.cd.get_max_values(), "x_label", "y_label", "Title")
+        self.pl.plot_bar(x, controller.cd.get_max_values(), x_label, y_label, title)
 
-    def prepare_plot_bar_mean(self, controller):
+    def prepare_plot_bar_mean(self, controller, x_label, y_label, title):
         x = []
         for i in range(len(controller.descriptions)-1):
             if controller.id.get_truth_table()[i]:
                 x.append(controller.descriptions[i])
 
-        self.pl.plot_bar(x, controller.cd.get_mean_values(), "x_label", "y_label", "Title")
+        self.pl.plot_bar(x, controller.cd.get_mean_values(), x_label, y_label, title)

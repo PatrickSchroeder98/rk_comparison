@@ -1,4 +1,4 @@
-import math
+from math import e
 
 
 class NuclearDecay:
@@ -7,6 +7,7 @@ class NuclearDecay:
     """
 
     def __init__(self):
+        """Constructor setting up default values of tau and nuclei."""
         self.tau = 1.0
         self.nuclei = 100.0
 
@@ -16,7 +17,7 @@ class NuclearDecay:
 
     def equation_analytical(self, nu0, t):
         """Analytical solution to the nuclear decay problem. Source: [6] in bibliography."""
-        return nu0 * pow(math.e, -(t / self.get_tau()))
+        return nu0 * pow(e, -(t / self.get_tau()))
 
     def set_tau(self, tau):
         """Tau can be set by user with this method."""

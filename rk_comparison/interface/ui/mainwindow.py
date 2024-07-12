@@ -42,3 +42,5 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def exit_clicked(self):
         self.close()
+        del self.controller
+

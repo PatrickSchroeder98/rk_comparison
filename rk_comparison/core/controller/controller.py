@@ -85,20 +85,21 @@ class Controller:
 
     def calculate(self):
         """Method loops through the list of rk and frk methods, calculating the problem and saving the results to the
-        proper lists. Added log to console for verification if the data are saved to correct lists. On the last loop
-        iteration, the list of time values is not cleared.
+        proper lists. Added optional log to console for verification if the data are saved to correct lists. On the
+        last loop iteration, the list of time values is saved to temporary variable and after loop finishes, it is
+        assigned back to time output data.
         """
         temp = []
         for i in range(len(self.methods_rk)):
             if self.id.get_truth_table()[i]:
-                print(
-                    "From"
-                    + str(self.methods_rk[i])
-                    + " results are going to: "
-                    + str(self.results_rk[i])
-                    + ", this will be described as: "
-                    + str(self.descriptions[i])
-                )
+                # print(
+                #     "From"
+                #     + str(self.methods_rk[i])
+                #     + " results are going to: "
+                #     + str(self.results_rk[i])
+                #     + ", this will be described as: "
+                #     + str(self.descriptions[i])
+                # )
                 self.methods_rk[i](
                     self.nd.equation,
                     self.rs.get_time(),
@@ -110,7 +111,7 @@ class Controller:
                     temp = self.rs.get_time()
 
                 self.rs.set_time(self.id.get_t_min())
-        self.rs.time = temp
+        self.rs.set_time_final(temp)
 
     def calculate_analytical(self):
         """Method calculates the nuclear decay problem in analytical way. Requires the time list to be filled with

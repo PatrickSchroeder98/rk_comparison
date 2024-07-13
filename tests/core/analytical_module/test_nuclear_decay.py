@@ -3,7 +3,8 @@ from math import e
 from rk_comparison.core.analytical_module.nuclear_decay import NuclearDecay
 
 
-class Tests(unittest.TestCase):
+class TestNuclearDecay(unittest.TestCase):
+    """Tests for the NuclearDecay class."""
 
     def test_init(self):
         """Test to check constructor while creating the object."""

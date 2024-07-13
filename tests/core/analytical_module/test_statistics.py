@@ -2,7 +2,8 @@ import unittest
 from rk_comparison.core.analytical_module.statistics import Statistics
 
 
-class Tests(unittest.TestCase):
+class TestStatistics(unittest.TestCase):
+    """Tests for the Statistics class."""
 
     def test_min(self):
         """Test for finding minimal value in a list."""

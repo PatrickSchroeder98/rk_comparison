@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Documentation</title>
     <link rel="stylesheet" href="styles.css">
+	<script src="load-html.js" defer></script>
 </head>
 <body>
-    <header>
-		<nav>
-			<span class="header-title">Software Documentation</span>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-			</ul>
-		</nav>
-	</header>
+    <div id="header"></div>
     <div class="container">
         <img src="assets/img/python-logo.png" alt="Project Logo" class="logo">
         <div class="title-frame">
@@ -41,9 +35,13 @@
             <a href="scope.html">Next Page</a>
         </div>
     </div>
-    <footer>
-        &copy; 2024, Patrick Schröder, All rights reserved.
-    </footer>
+    <div id="footer"></div>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+        });
+    </script>
 </body>
 </html>
 

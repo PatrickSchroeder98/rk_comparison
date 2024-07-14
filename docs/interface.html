@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interface Documentation</title>
     <link rel="stylesheet" href="interface.css">
+    <script src="load-html.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <span class="header-title">Software Documentation</span>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header"></div>
     <div class="container">
         <h1 class="title">Interface Documentation</h1>
         
@@ -222,9 +216,13 @@
             <a href="bibliography.html" class="next-link">Next</a>
         </div>
     </div>
-    <footer>
-        &copy; 2024, Patrick Schröder, All rights reserved.
-    </footer>
+    <div id="footer"></div>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+        });
+    </script>
 </body>
 </html>
 

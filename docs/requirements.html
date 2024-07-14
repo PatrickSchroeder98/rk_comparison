@@ -5,16 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Requirements Tables</title>
     <link rel="stylesheet" href="requirements.css">
+    <script src="load-html.js" defer></script>
 </head>
 <body>
-	<header>
-		<nav>
-			<span class="header-title">Software Documentation</span>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-			</ul>
-		</nav>
-	</header>
+    <div id="header"></div>
     <h1>Application goals</h1>
     <table>
         <tr>
@@ -82,8 +76,12 @@
         <a href="scope.html" class="prev-link">Previous Page</a>
         <a href="interface.html" class="next-link">Next Page</a>
     </div>
-	<footer>
-        &copy; 2024, Patrick Schröder, All rights reserved.
-    </footer>
+    <div id="footer"></div>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+        });
+    </script>
 </body>
 </html>

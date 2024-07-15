@@ -11,6 +11,7 @@ class Controller:
     """Class that calls methods to initialize data, to calculate the problem and to plot the results."""
 
     def __init__(self):
+        """Constructor sets up default values of attributes."""
         self.rk = RungeKutta()
         self.frk = FehlbergRungeKutta()
         self.rs = OutputData()
@@ -134,4 +135,3 @@ class Controller:
                 self.cd.set_min_values(self.st.min_max_value(self.compare_rk[j](), True))
                 self.cd.set_max_values(self.st.min_max_value(self.compare_rk[j](), False))
                 self.cd.set_mean_values(self.st.mean(self.compare_rk[j]()))
-

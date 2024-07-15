@@ -19,6 +19,7 @@ class Plot:
         plt.show()
 
     def plot_bar(self, x, y, x_label, y_label, title):
+        """Method shows the bar plot, x and y are lists, title, x_label, y_label and legend are strings."""
         plt.bar(x, y)
         plt.title(title)
         plt.xlabel(x_label)

@@ -1,6 +1,5 @@
 import unittest
 from unittest import mock
-
 from rk_comparison.core.plotting_module.plot import Plot
 
 
@@ -24,6 +23,7 @@ class TestPlot(unittest.TestCase):
         mock_plt.ylabel.assert_called_once_with("Test Y")
         mock_plt.legend.assert_called_once_with("Test Legend")
         mock_plt.show.assert_called_once()
+        del pl
 
     @mock.patch("rk_comparison.core.plotting_module.plot.plt")
     def test_plot_bar(self, mock_plt):
@@ -40,6 +40,7 @@ class TestPlot(unittest.TestCase):
         mock_plt.xlabel.assert_called_once_with("Test X")
         mock_plt.ylabel.assert_called_once_with("Test Y")
         mock_plt.show.assert_called_once()
+        del pl
 
 
 if __name__ == "__main__":

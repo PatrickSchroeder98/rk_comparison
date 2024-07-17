@@ -1,5 +1,12 @@
 import unittest
 from rk_comparison.core.controller.controller import Controller
+from rk_comparison.core.analytical_module.rungekutta import RungeKutta
+from rk_comparison.core.analytical_module.fehlbergrungekutta import FehlbergRungeKutta
+from rk_comparison.core.data.output_data import OutputData
+from rk_comparison.core.data.input_data import InputData
+from rk_comparison.core.analytical_module.nuclear_decay import NuclearDecay
+from rk_comparison.core.data.comparison_data import ComparisonData
+from rk_comparison.core.analytical_module.statistics import Statistics
 
 
 class TestController(unittest.TestCase):
@@ -8,6 +15,37 @@ class TestController(unittest.TestCase):
     def test_init(self):
         """Test chosen attribute from controller class."""
         controller = Controller()
+        rk = RungeKutta()
+        frk = FehlbergRungeKutta()
+        rs = OutputData()
+        id = InputData()
+        nd = NuclearDecay()
+        st = Statistics()
+        cd = ComparisonData()
+        methods_rk = [
+            rk.rungekutta1,
+            rk.rungekutta2,
+            rk.rungekutta3,
+            rk.rungekutta4,
+            rk.rungekutta5,
+            rk.rungekutta6,
+            frk.fehlbergrungekutta5,
+            frk.fehlbergrungekutta6,
+            frk.fehlbergrungekutta7,
+            frk.fehlbergrungekutta8,
+        ]
+        results_rk = [
+            rs.get_resultRK1,
+            rs.get_resultRK2,
+            rs.get_resultRK3,
+            rs.get_resultRK4,
+            rs.get_resultRK5,
+            rs.get_resultRK6,
+            rs.get_resultFRK5,
+            rs.get_resultFRK6,
+            rs.get_resultFRK7,
+            rs.get_resultFRK8,
+        ]
         descriptions = [
             "RK1",
             "RK2",
@@ -21,8 +59,35 @@ class TestController(unittest.TestCase):
             "FRK8",
             "Analytical",
         ]
+        compare_rk = [
+            cd.get_compareRK1,
+            cd.get_compareRK2,
+            cd.get_compareRK3,
+            cd.get_compareRK4,
+            cd.get_compareRK5,
+            cd.get_compareRK6,
+            cd.get_compareFRK5,
+            cd.get_compareFRK6,
+            cd.get_compareFRK7,
+            cd.get_compareFRK8
+        ]
+
+        self.assertEqual(type(rk), type(controller.rk))
+        self.assertEqual(type(frk), type(controller.frk))
+        self.assertEqual(type(rs), type(controller.rs))
+        self.assertEqual(type(id), type(controller.id))
+        self.assertEqual(type(nd), type(controller.nd))
+        self.assertEqual(type(st), type(controller.st))
+        self.assertEqual(type(cd), type(controller.cd))
+
+        for i in range(len(methods_rk)):
+            self.assertEqual(type(methods_rk[i]), type(controller.methods_rk[i]))
+        for i in range(len(results_rk)):
+            self.assertEqual(type(results_rk[i]), type(controller.results_rk[i]))
+        for i in range(len(compare_rk)):
+            self.assertEqual(type(compare_rk[i]), type(controller.compare_rk[i]))
         self.assertEqual(descriptions, controller.descriptions)
-        del controller
+        del controller, rk, frk, rs, id, nd, st, cd
 
     def test_initialize(self):
         """Tests method to initialize new data."""

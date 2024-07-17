@@ -4,6 +4,7 @@ from rk_comparison.core.plotting_module.plot import Plot
 class PlotData:
 
     def __init__(self):
+        """Constructor creates the Plot object."""
         self.pl = Plot()
 
     def plot(self, compare, controller, functions, y_label, title):

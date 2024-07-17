@@ -1,5 +1,5 @@
 import unittest
-import pytestqt
+from pytestqt import qtbot
 from rk_comparison.interface.ui.errorwindow import ErrorWindow
 
 

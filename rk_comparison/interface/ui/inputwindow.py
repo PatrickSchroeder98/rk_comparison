@@ -5,8 +5,10 @@ from rk_comparison.core.exceptions.checks import Checks
 
 
 class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
+    """Class for setting up the input window."""
 
     def __init__(self, parent=None):
+        """Constructor sets up the required data and connects buttons with methods."""
         super(InputWindow, self).__init__(parent=parent)
         self.setupUi(self)
 
@@ -62,6 +64,7 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
         ]
 
     def initialize_data(self, controller):
+        """Method reads current data through controller and displays it to user."""
         self.controller = controller
         self.line_t_min.setText(str(controller.id.get_t_min()))
         self.line_delta.setText(str(controller.id.get_dt()))
@@ -71,6 +74,9 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
         self.get_truth_table_values()
 
     def apply_clicked(self):
+        """Method does a series of checks on a data provided by user. Any fail results in error message. If all
+        checks are passed, the method saves data through controller and closes the window.
+        """
         if self.change_type():
             check = self.checks.min_max_check(self.data_placeholders[0],
                                               self.data_placeholders[2])
@@ -99,9 +105,14 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
                 self.raise_error(check)
 
     def cancel_clicked(self):
+        """Method closes the input window without data changes."""
         self.close()
 
     def change_type(self):
+        """Method to change type of input variables from string to float. Returns True if successful or False if
+        unsuccessful. Before returning False, it also calls the raise_error() method with message as argument.
+        Message is being build if str_to_float() fails and returns string with error message instead of number.
+        """
         message = ""
         for i in range(len(self.data_names)):
             element = self.checks.str_to_float(self.data_names[i], self.data_ui[i].text())
@@ -116,11 +127,13 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
         return True
 
     def get_truth_table_values(self):
+        """Method gets the values of truth table from data through controller."""
         for i in range(len(self.truth)):
             if self.controller.id.get_truth_table()[i]:
                 self.truth[i].setChecked(True)
 
     def build_truth_table(self):
+        """Method sets up the truth table based on UI elements."""
         self.truth_table = [
             self.rk1.isChecked(),
             self.rk2.isChecked(),
@@ -135,6 +148,7 @@ class InputWindow(QtWidgets.QDialog, Ui_InputWindow):
         ]
 
     def raise_error(self, message):
+        """Method shows the widget with error message."""
         self.popup = QtWidgets.QDialog()
         self.popup_ui = ErrorWindow()
         self.popup_ui.set_message(message)

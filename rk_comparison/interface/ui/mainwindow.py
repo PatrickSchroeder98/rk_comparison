@@ -6,8 +6,10 @@ from rk_comparison.core.controller.controller import Controller
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+    """Class for setting up the main window."""
 
     def __init__(self, parent=None):
+        """Constructor builds the window, initializes data and connects the buttons with methods."""
         super(MainWindow, self).__init__(parent=parent)
         self.setupUi(self)
 
@@ -19,12 +21,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.exit_button.clicked.connect(self.exit_clicked)
 
     def input_clicked(self):
+        """Method shows the window with input data."""
         self.popup = QtWidgets.QDialog()
         self.popup_ui = InputWindow()
         self.popup_ui.initialize_data(self.controller)
         self.popup_ui.exec()
 
     def calculate_clicked(self):
+        """Method starts calculations and shows window with plotting options."""
         self.controller.initialize(self.controller.id.get_t_min(),
                                    self.controller.id.get_dt(),
                                    self.controller.id.get_t_max(),
@@ -41,6 +45,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.popup_ui.show()
 
     def exit_clicked(self):
+        """Method closes the main window."""
         self.close()
         del self.controller
 

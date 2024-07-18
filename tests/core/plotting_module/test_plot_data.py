@@ -30,12 +30,19 @@ class TestPlotData(unittest.TestCase):
             False,
             False,
             False,
-            False
+            False,
         ]
         controller.cd.compareRK4 = [1.0, 2.0, 3.0]
         controller.rs.time = [1.0, 2.0, 3.0]
         pd.plot(False, controller, controller.compare_rk, "Test y label", "Test title")
-        pd.pl.plot.assert_called_once_with([1.0, 2.0, 3.0], [[1.0, 2.0, 3.0]], "Time [s]", "Test y label", ['RK4'], "Test title")
+        pd.pl.plot.assert_called_once_with(
+            [1.0, 2.0, 3.0],
+            [[1.0, 2.0, 3.0]],
+            "Time [s]",
+            "Test y label",
+            ["RK4"],
+            "Test title",
+        )
         del pd, controller
 
     def test_plot_with_compare(self):
@@ -53,15 +60,21 @@ class TestPlotData(unittest.TestCase):
             False,
             False,
             False,
-            False
+            False,
         ]
         controller.rs.resultRK4 = [1.0, 2.0, 3.0]
         controller.rs.time = [1.0, 2.0, 3.0]
         controller.rs.resultAnalytical = [1.1, 2.2, 3.3]
         pd.plot(True, controller, controller.results_rk, "Test y label", "Test title")
-        pd.pl.plot.assert_called_once_with([1.0, 2.0, 3.0], [[1.0, 2.0, 3.0], [1.1, 2.2, 3.3]], "Time [s]", "Test y label", ['RK4', "Analytical"], "Test title")
+        pd.pl.plot.assert_called_once_with(
+            [1.0, 2.0, 3.0],
+            [[1.0, 2.0, 3.0], [1.1, 2.2, 3.3]],
+            "Time [s]",
+            "Test y label",
+            ["RK4", "Analytical"],
+            "Test title",
+        )
         del pd, controller
-
 
     def test_prepare_plot_bar_min(self):
         """Tests the method preparing data for bar plot with min values."""
@@ -78,11 +91,15 @@ class TestPlotData(unittest.TestCase):
             False,
             False,
             False,
-            False
+            False,
         ]
         controller.cd.min_values = [1.0]
-        pd.prepare_plot_bar_min(controller, "Test x label", "Test y label", "Test title")
-        pd.pl.plot_bar.assert_called_with(["RK4"], [1.0], "Test x label", "Test y label", "Test title")
+        pd.prepare_plot_bar_min(
+            controller, "Test x label", "Test y label", "Test title"
+        )
+        pd.pl.plot_bar.assert_called_with(
+            ["RK4"], [1.0], "Test x label", "Test y label", "Test title"
+        )
         del pd, controller
 
     def test_prepare_plot_bar_max(self):
@@ -100,11 +117,15 @@ class TestPlotData(unittest.TestCase):
             False,
             False,
             False,
-            False
+            False,
         ]
         controller.cd.max_values = [1.0]
-        pd.prepare_plot_bar_max(controller, "Test x label", "Test y label", "Test title")
-        pd.pl.plot_bar.assert_called_with(["RK4"], [1.0], "Test x label", "Test y label", "Test title")
+        pd.prepare_plot_bar_max(
+            controller, "Test x label", "Test y label", "Test title"
+        )
+        pd.pl.plot_bar.assert_called_with(
+            ["RK4"], [1.0], "Test x label", "Test y label", "Test title"
+        )
         del pd, controller
 
     def test_prepare_plot_bar_mean(self):
@@ -122,11 +143,15 @@ class TestPlotData(unittest.TestCase):
             False,
             False,
             False,
-            False
+            False,
         ]
         controller.cd.mean_values = [1.0]
-        pd.prepare_plot_bar_mean(controller, "Test x label", "Test y label", "Test title")
-        pd.pl.plot_bar.assert_called_with(["RK4"], [1.0], "Test x label", "Test y label", "Test title")
+        pd.prepare_plot_bar_mean(
+            controller, "Test x label", "Test y label", "Test title"
+        )
+        pd.pl.plot_bar.assert_called_with(
+            ["RK4"], [1.0], "Test x label", "Test y label", "Test title"
+        )
         del pd, controller
 
 

@@ -4,6 +4,7 @@ from rk_comparison.interface.ui.mainwindow import MainWindow
 
 
 def main():
+    """Main function of app, shows the Main Window."""
     app = QtWidgets.QApplication(argv)
     w = MainWindow()
     w.show()

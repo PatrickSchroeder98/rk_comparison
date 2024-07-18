@@ -5,8 +5,10 @@ from rk_comparison.interface.ui.errorwindow import ErrorWindow
 from rk_comparison.core.saving_module.save_data import SaveData
 
 class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
+    """Class for setting up the plotting window."""
 
     def __init__(self, parent=None):
+        """Constructor builds the window, initializes data and connects the buttons with methods."""
         super(PlottingWindow, self).__init__(parent=parent)
         self.setupUi(self)
 
@@ -25,9 +27,11 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         self.save_button.clicked.connect(self.save_clicked)
 
     def initialize_controller(self, controller):
+        """Method initializes controller object from argument."""
         self.controller = controller
 
     def plot_results_clicked(self):
+        """Method to display plot with results."""
         self.pl.plot(
             True,
             self.controller,
@@ -37,6 +41,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         )
 
     def plot_comparison_clicked(self):
+        """Method to display plot with comparison."""
         self.pl.plot(
             False,
             self.controller,
@@ -46,6 +51,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         )
 
     def min_clicked(self):
+        """Method to display bar plot with minimal values."""
         self.pl.prepare_plot_bar_min(
             self.controller,
             "Numerical Methods",
@@ -54,6 +60,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         )
 
     def max_clicked(self):
+        """Method to display bar plot with maximal values."""
         self.pl.prepare_plot_bar_max(
             self.controller,
             "Numerical Methods",
@@ -62,6 +69,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         )
 
     def mean_clicked(self):
+        """Method to display bar plot with mean values."""
         self.pl.prepare_plot_bar_mean(
             self.controller,
             "Numerical Methods",
@@ -70,6 +78,7 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
         )
 
     def save_clicked(self):
+        """Method opens a file and calls a method to save the data. If it fails, the error message is showed."""
         dialog = QtWidgets.QFileDialog()
         dialog.setNameFilter("*.csv")
         dialog_successful = dialog.exec()
@@ -86,4 +95,5 @@ class PlottingWindow(QtWidgets.QDialog, Ui_PlottingWindow):
                 self.popup_ui.exec()
 
     def cancel_clicked(self):
+        """Method closes the plotting window."""
         self.close()

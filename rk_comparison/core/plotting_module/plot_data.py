@@ -2,6 +2,7 @@ from rk_comparison.core.plotting_module.plot import Plot
 
 
 class PlotData:
+    """Class that have methods to prepare data before plotting."""
 
     def __init__(self):
         """Constructor creates the Plot object."""

@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch, mock_open
 from pytestqt import qtbot
 from PyQt6 import QtWidgets
 from rk_comparison.interface.ui.plottingwindow import PlottingWindow
@@ -149,9 +149,13 @@ class TestPlottingWindow:
 
         pw.sv.save = MagicMock()
 
-        pw.save_button.click()
+        m_open = mock_open()
+        with patch("builtins.open", m_open):
+            pw.save_button.click()
 
         pw.sv.save.assert_called_once()
+        m_open.assert_called_once_with("test.csv", mode="w", newline='')
+
         del pw, controller
 
     def test_cancel_clicked(self, qtbot):

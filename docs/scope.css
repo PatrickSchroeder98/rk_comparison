@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,6 +8,7 @@ body {
     background-color: #f0f0f0;
 }
 
+
 .container {
     flex: 1;
     display: flex;
@@ -18,27 +18,67 @@ body {
     text-align: center;
 }
 
-h1 {
+.title {
+    font-size: 2em;
     color: #333;
+    margin: 20px 0;
 }
 
-table {
+.scope-table {
     width: 80%;
     border-collapse: collapse;
     margin-bottom: 60px;
     text-align: center;
 }
 
-th, td {
+.scope-table tr {
+    border: 1px solid black;
+}
+
+.scope-table td {
     padding: 10px;
     width: 50%;
 	border: 1px solid black;
-    padding: 8px;
+}
+
+.scope-table td[colspan="2"] {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.highlight-row {
+    background-color: #c2c2c2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lists {
     text-align: left;
 }
 
-th {
-    background-color: #c2c2c2;
+.scope-table .risk {
+    width: 75%;
+    text-align: center;
+}
+
+.rating.low {
+    background-color: yellow;
+    width: 25%;
+}
+
+.rating.medium {
+    background-color: orange;
+    width: 25%;
+}
+
+.rating.high {
+    background-color: red;
+    width: 25%;
+}
+
+.screenshot {
+    max-width: 100%;
+    height: auto;
 }
 
 .navigation {

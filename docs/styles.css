@@ -66,6 +66,34 @@ body {
     color: #0056b3;
 }
 
+.code-docs {
+    text-align: center;
+    margin-bottom: 20px;
+	padding-bottom: 0px;
+	display: inline-flex;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	font-weight: bold;
+}
+
+.code-docs p {
+    font-size: 1.2em;
+}
+
+.code-docs a {
+    margin-left: 10px;
+    display: inline-flex;
+}
+
+.code-docs img {
+	display: block;
+	max-width:24px;
+	max-height:24px;
+	width: auto;
+	height: auto;
+}
+
 .next-page {
     margin-top: 20px;
 	margin-bottom: 20px;

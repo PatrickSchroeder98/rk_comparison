@@ -21,8 +21,11 @@ class SaveData:
     def prepare_data(self, controller):
         """Method calls various methods to prepare parts of results and returns created list. It also adds a time list
         at the beginning. Returns the prepared list."""
-        results = [["Time [s]"] + controller.rs.get_time(),
-                   [controller.descriptions[-1] + " [nuclei]"] + controller.rs.get_result_analytical()]
+        results = [
+            ["Time [s]"] + controller.rs.get_time(),
+            [controller.descriptions[-1] + " [nuclei]"]
+            + controller.rs.get_result_analytical(),
+        ]
         whitespaces_count = len(results[0])
         self.add_space(results, whitespaces_count)
         self.add_results(controller, results, False)
@@ -30,9 +33,15 @@ class SaveData:
         self.add_results(controller, results, True)
         self.add_space(results, whitespaces_count)
         self.add_statistics_descriptions(controller, results, whitespaces_count)
-        self.add_statistics(results, controller.cd.get_min_values(), "Minimal values", whitespaces_count)
-        self.add_statistics(results, controller.cd.get_max_values(), "Maximal values", whitespaces_count)
-        self.add_statistics(results, controller.cd.get_mean_values(), "Mean values", whitespaces_count)
+        self.add_statistics(
+            results, controller.cd.get_min_values(), "Minimal values", whitespaces_count
+        )
+        self.add_statistics(
+            results, controller.cd.get_max_values(), "Maximal values", whitespaces_count
+        )
+        self.add_statistics(
+            results, controller.cd.get_mean_values(), "Mean values", whitespaces_count
+        )
         self.add_space(results, whitespaces_count)
 
         return results
@@ -42,9 +51,15 @@ class SaveData:
         for i in range(len(controller.results_rk)):
             if controller.id.get_truth_table()[i]:
                 if cmp:
-                    results.append(["Comparison " + controller.descriptions[i] + " [nuclei]"] + controller.compare_rk[i]())
+                    results.append(
+                        ["Comparison " + controller.descriptions[i] + " [nuclei]"]
+                        + controller.compare_rk[i]()
+                    )
                 else:
-                    results.append([controller.descriptions[i] + " [nuclei]"] + controller.results_rk[i]())
+                    results.append(
+                        [controller.descriptions[i] + " [nuclei]"]
+                        + controller.results_rk[i]()
+                    )
 
     def add_space(self, results, whitespaces_count):
         """Method adds list of whitespaces to results."""

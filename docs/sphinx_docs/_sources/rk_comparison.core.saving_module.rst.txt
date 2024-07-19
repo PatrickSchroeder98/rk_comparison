@@ -1,0 +1,21 @@
+rk\_comparison.core.saving\_module package
+==========================================
+
+Submodules
+----------
+
+rk\_comparison.core.saving\_module.save\_data module
+----------------------------------------------------
+
+.. automodule:: rk_comparison.core.saving_module.save_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison.core.saving_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

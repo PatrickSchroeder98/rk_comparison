@@ -1,0 +1,29 @@
+rk\_comparison.core.exceptions package
+======================================
+
+Submodules
+----------
+
+rk\_comparison.core.exceptions.checks module
+--------------------------------------------
+
+.. automodule:: rk_comparison.core.exceptions.checks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rk\_comparison.core.exceptions.exceptions module
+------------------------------------------------
+
+.. automodule:: rk_comparison.core.exceptions.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison.core.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

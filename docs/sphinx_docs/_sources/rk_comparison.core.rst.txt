@@ -1,0 +1,23 @@
+rk\_comparison.core package
+===========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   rk_comparison.core.analytical_module
+   rk_comparison.core.controller
+   rk_comparison.core.data
+   rk_comparison.core.exceptions
+   rk_comparison.core.plotting_module
+   rk_comparison.core.saving_module
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

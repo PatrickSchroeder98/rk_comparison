@@ -1,0 +1,18 @@
+tests.interface package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tests.interface.ui
+
+Module contents
+---------------
+
+.. automodule:: tests.interface
+   :members:
+   :undoc-members:
+   :show-inheritance:

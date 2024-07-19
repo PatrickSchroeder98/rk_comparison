@@ -1,0 +1,45 @@
+tests.interface.ui package
+==========================
+
+Submodules
+----------
+
+tests.interface.ui.test\_errorwindow module
+-------------------------------------------
+
+.. automodule:: tests.interface.ui.test_errorwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.interface.ui.test\_inputwindow module
+-------------------------------------------
+
+.. automodule:: tests.interface.ui.test_inputwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.interface.ui.test\_mainwindow module
+------------------------------------------
+
+.. automodule:: tests.interface.ui.test_mainwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.interface.ui.test\_plottingwindow module
+----------------------------------------------
+
+.. automodule:: tests.interface.ui.test_plottingwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests.interface.ui
+   :members:
+   :undoc-members:
+   :show-inheritance:

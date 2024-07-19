@@ -1,0 +1,19 @@
+rk\_comparison package
+======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   rk_comparison.core
+   rk_comparison.interface
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison
+   :members:
+   :undoc-members:
+   :show-inheritance:

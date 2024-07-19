@@ -1,0 +1,29 @@
+tests.core.plotting\_module package
+===================================
+
+Submodules
+----------
+
+tests.core.plotting\_module.test\_plot module
+---------------------------------------------
+
+.. automodule:: tests.core.plotting_module.test_plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.core.plotting\_module.test\_plot\_data module
+---------------------------------------------------
+
+.. automodule:: tests.core.plotting_module.test_plot_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests.core.plotting_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

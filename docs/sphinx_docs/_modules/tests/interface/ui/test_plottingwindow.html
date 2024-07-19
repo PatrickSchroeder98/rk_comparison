@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tests.interface.ui.test_plottingwindow &mdash; rk_comparison 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            rk_comparison
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">rk_comparison</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">rk_comparison</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">tests.interface.ui.test_plottingwindow</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for tests.interface.ui.test_plottingwindow</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span><span class="p">,</span> <span class="n">patch</span><span class="p">,</span> <span class="n">mock_open</span>
+<span class="kn">from</span> <span class="nn">pytestqt</span> <span class="kn">import</span> <span class="n">qtbot</span>
+<span class="kn">from</span> <span class="nn">PyQt6</span> <span class="kn">import</span> <span class="n">QtWidgets</span>
+<span class="kn">from</span> <span class="nn">rk_comparison.interface.ui.plottingwindow</span> <span class="kn">import</span> <span class="n">PlottingWindow</span>
+<span class="kn">from</span> <span class="nn">rk_comparison.core.controller.controller</span> <span class="kn">import</span> <span class="n">Controller</span>
+<span class="kn">from</span> <span class="nn">rk_comparison.core.plotting_module.plot_data</span> <span class="kn">import</span> <span class="n">PlotData</span>
+<span class="kn">from</span> <span class="nn">rk_comparison.interface.ui.errorwindow</span> <span class="kn">import</span> <span class="n">ErrorWindow</span>
+<span class="kn">from</span> <span class="nn">rk_comparison.core.saving_module.save_data</span> <span class="kn">import</span> <span class="n">SaveData</span>
+
+
+<div class="viewcode-block" id="TestPlottingWindow">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow">[docs]</a>
+<span class="k">class</span> <span class="nc">TestPlottingWindow</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tests for the PlottingWindow class.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="TestPlottingWindow.test_init">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_init">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the types of attributes and the buttons connection to methods.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">controller</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="p">,</span> <span class="n">PlotData</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">er</span><span class="p">,</span> <span class="n">ErrorWindow</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">sv</span><span class="p">,</span> <span class="n">SaveData</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">plot_result</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">plot_results_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">plot_comparison</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">plot_comparison_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">cancel_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">cancel_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">plot_min</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">min_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">plot_max</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">max_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">plot_mean</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">mean_clicked</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">pw</span><span class="o">.</span><span class="n">save_clicked</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_initialize_controller">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_initialize_controller">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_initialize_controller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the initialize_controller method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">controller</span> <span class="o">==</span> <span class="n">controller</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_plot_results_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_plot_results_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_plot_results_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the plot_results_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">plot_result</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="kc">True</span><span class="p">,</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">results_rk</span><span class="p">,</span>
+            <span class="s2">&quot;Nuclear Decay [nuclei]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Nuclear Decay&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_plot_comparison_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_plot_comparison_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_plot_comparison_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the plot_comparison_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">plot_comparison</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="kc">False</span><span class="p">,</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="o">.</span><span class="n">compare_rk</span><span class="p">,</span>
+            <span class="s2">&quot;Analytical - RK [nuclei]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;RK Comparison&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_min_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_min_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_min_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the min_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_min</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">plot_min</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_min</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Methods&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Min(Analytical - RK) [nuclei]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Minimal value of comparison&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_max_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_max_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_max_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the max_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_max</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">plot_max</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_max</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Methods&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Max(Analytical - RK) [nuclei]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Maximal value of comparison&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_mean_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_mean_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_mean_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the mean_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_mean</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">plot_mean</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">prepare_plot_bar_mean</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">controller</span><span class="p">,</span>
+            <span class="s2">&quot;Numerical Methods&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Mean(Analytical - RK) [nuclei]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Mean value of comparison&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_save_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_save_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_save_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">,</span> <span class="n">monkeypatch</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the save_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+        <span class="n">controller</span> <span class="o">=</span> <span class="n">Controller</span><span class="p">()</span>
+        <span class="n">pw</span><span class="o">.</span><span class="n">initialize_controller</span><span class="p">(</span><span class="n">controller</span><span class="p">)</span>
+
+        <span class="n">file_dialog</span> <span class="o">=</span> <span class="n">QtWidgets</span><span class="o">.</span><span class="n">QFileDialog</span><span class="p">()</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">setNameFilter</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">exec</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">file_dialog</span><span class="o">.</span><span class="n">selectedFiles</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">(</span><span class="n">return_value</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;test.csv&quot;</span><span class="p">])</span>
+
+        <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">QtWidgets</span><span class="p">,</span> <span class="s2">&quot;QFileDialog&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">file_dialog</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">sv</span><span class="o">.</span><span class="n">save</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+
+        <span class="n">m_open</span> <span class="o">=</span> <span class="n">mock_open</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="n">m_open</span><span class="p">):</span>
+            <span class="n">pw</span><span class="o">.</span><span class="n">save_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">sv</span><span class="o">.</span><span class="n">save</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+        <span class="n">m_open</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+        <span class="k">del</span> <span class="n">pw</span><span class="p">,</span> <span class="n">controller</span></div>
+
+
+<div class="viewcode-block" id="TestPlottingWindow.test_cancel_clicked">
+<a class="viewcode-back" href="../../../../tests.interface.ui.html#tests.interface.ui.test_plottingwindow.TestPlottingWindow.test_cancel_clicked">[docs]</a>
+    <span class="k">def</span> <span class="nf">test_cancel_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qtbot</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tests the cancel_clicked method.&quot;&quot;&quot;</span>
+        <span class="n">pw</span> <span class="o">=</span> <span class="n">PlottingWindow</span><span class="p">()</span>
+        <span class="n">qtbot</span><span class="o">.</span><span class="n">add_widget</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+
+        <span class="n">pw</span><span class="o">.</span><span class="n">cancel_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">pw</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">del</span> <span class="n">pw</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Patrick Schröder.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

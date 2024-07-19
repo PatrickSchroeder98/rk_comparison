@@ -1,0 +1,45 @@
+rk\_comparison.interface.design package
+=======================================
+
+Submodules
+----------
+
+rk\_comparison.interface.design.ui\_errorwindow module
+------------------------------------------------------
+
+.. automodule:: rk_comparison.interface.design.ui_errorwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rk\_comparison.interface.design.ui\_inputwindow module
+------------------------------------------------------
+
+.. automodule:: rk_comparison.interface.design.ui_inputwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rk\_comparison.interface.design.ui\_mainwindow module
+-----------------------------------------------------
+
+.. automodule:: rk_comparison.interface.design.ui_mainwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rk\_comparison.interface.design.ui\_plottingwindow module
+---------------------------------------------------------
+
+.. automodule:: rk_comparison.interface.design.ui_plottingwindow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison.interface.design
+   :members:
+   :undoc-members:
+   :show-inheritance:

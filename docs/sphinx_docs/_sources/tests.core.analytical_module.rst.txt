@@ -1,0 +1,45 @@
+tests.core.analytical\_module package
+=====================================
+
+Submodules
+----------
+
+tests.core.analytical\_module.test\_fehlbergrungekutta module
+-------------------------------------------------------------
+
+.. automodule:: tests.core.analytical_module.test_fehlbergrungekutta
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.core.analytical\_module.test\_nuclear\_decay module
+---------------------------------------------------------
+
+.. automodule:: tests.core.analytical_module.test_nuclear_decay
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.core.analytical\_module.test\_rungekutta module
+-----------------------------------------------------
+
+.. automodule:: tests.core.analytical_module.test_rungekutta
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.core.analytical\_module.test\_statistics module
+-----------------------------------------------------
+
+.. automodule:: tests.core.analytical_module.test_statistics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests.core.analytical_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

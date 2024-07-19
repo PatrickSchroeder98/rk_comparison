@@ -1,0 +1,29 @@
+tests.core.exceptions package
+=============================
+
+Submodules
+----------
+
+tests.core.exceptions.test\_checks module
+-----------------------------------------
+
+.. automodule:: tests.core.exceptions.test_checks
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.core.exceptions.test\_exceptions module
+---------------------------------------------
+
+.. automodule:: tests.core.exceptions.test_exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests.core.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

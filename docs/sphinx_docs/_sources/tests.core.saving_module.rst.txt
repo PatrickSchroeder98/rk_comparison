@@ -1,0 +1,21 @@
+tests.core.saving\_module package
+=================================
+
+Submodules
+----------
+
+tests.core.saving\_module.test\_save\_data module
+-------------------------------------------------
+
+.. automodule:: tests.core.saving_module.test_save_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: tests.core.saving_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

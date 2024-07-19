@@ -1,0 +1,23 @@
+tests.core package
+==================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tests.core.analytical_module
+   tests.core.controller
+   tests.core.data
+   tests.core.exceptions
+   tests.core.plotting_module
+   tests.core.saving_module
+
+Module contents
+---------------
+
+.. automodule:: tests.core
+   :members:
+   :undoc-members:
+   :show-inheritance:

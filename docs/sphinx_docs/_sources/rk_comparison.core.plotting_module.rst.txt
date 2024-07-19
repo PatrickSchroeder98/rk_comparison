@@ -1,0 +1,29 @@
+rk\_comparison.core.plotting\_module package
+============================================
+
+Submodules
+----------
+
+rk\_comparison.core.plotting\_module.plot module
+------------------------------------------------
+
+.. automodule:: rk_comparison.core.plotting_module.plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rk\_comparison.core.plotting\_module.plot\_data module
+------------------------------------------------------
+
+.. automodule:: rk_comparison.core.plotting_module.plot_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: rk_comparison.core.plotting_module
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,5 @@
+Full project documentation can be found on my website:
+https://patrickschroeder98.github.io/software_documentation/rk_comparison_docs/index.html
+
+or alternatively in the GitHub repository of it:
+https://github.com/PatrickSchroeder98/software_documentation/tree/main/rk_comparison_docs
